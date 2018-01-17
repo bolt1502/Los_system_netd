@@ -53,7 +53,8 @@ using android::base::WriteStringToFile;
 #include "wpa_ctrl.h"
 #endif
 
-std:: string hostapd_unix_file(StringPrintf("/data/misc/wifi/hostapd/wlan0"));
+//std:: string hostapd_unix_file(StringPrintf("/data/misc/wifi/hostapd/wlan0"));
+  std:: string hostapd_unix_file(StringPrintf("/data/misc/wifi/hostapd/ap0"));
 #ifdef LIBWPA_CLIENT_EXISTS
 static const char HOSTAPD_DHCP_DIR[]    = "/data/misc/dhcp";
 #endif
@@ -289,7 +290,8 @@ int SoftapController::setSoftap(int argc, char *argv[]) {
             "hw_mode=%c\n"
             "ignore_broadcast_ssid=%d\n"
             "wowlan_triggers=any\n",
-            argv[2], argv[3], channel, (channel <= 14) ? 'g' : 'a', hidden));
+        //  argv[2], argv[3], channel, (channel <= 14) ? 'g' : 'a', hidden));
+            "ap0", argv[3], channel, (channel <= 14) ? 'g' : 'a', hidden));
 
     std::string fbuf;
     if (argc > 7) {
